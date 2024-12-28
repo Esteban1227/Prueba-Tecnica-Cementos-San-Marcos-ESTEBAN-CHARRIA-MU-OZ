@@ -1,0 +1,472 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.main__sectionToDoS__checklist__item__edit {
+  width: auto;
+  border: 1px solid #fe7800;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+.main__sectionToDoS__checklist__item__edit:focus {
+  outline: none;
+}
+
+.header {
+  position: absolute;
+  top: 40px;
+  left: 0;
+}
+
+.header__logo {
+  width: 350px;
+}
+
+.main__sectionToDoS {
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
+.main__sectionToDoS__title {
+  text-align: center;
+  font-weight: bold;
+  color: #004976;
+}
+
+.main__sectionToDoS__search {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-inline: 0.8em;
+  border: solid 1px #fe7800;
+  border-radius: 30px;
+  transition: border-radius 0.5s ease;
+  background: #fff;
+}
+
+.main__sectionToDoS__search__icon {
+  border: none;
+  background: none;
+  color: #8b8ba7;
+}
+
+.main__sectionToDoS__search__input {
+  font-size: 0.9rem;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+}
+
+.main__sectionToDoS__search:before {
+  content: "";
+  position: absolute;
+  background: #fe7800;
+  transform: scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  border-radius: 1px;
+  transition: transform 0.3s ease;
+}
+
+.main__sectionToDoS__search:focus-within {
+  border-radius: 1px;
+}
+
+.main__sectionToDoS__search__input:focus {
+  outline: none;
+}
+
+.main__sectionToDoS__search:focus-within:before {
+  transform: scale(1);
+}
+
+.main__sectionToDoS__search__icon svg {
+  width: 17px;
+  margin-top: 3px;
+}
+
+.main__sectionToDoS__search__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fe7800;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+
+  svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+.main__sectionToDoS__controls__btnDeleteAll svg{
+  stroke: #004976;
+  transition: 0.3s;
+}
+
+.main__sectionToDoS__controls__btnDeleteAll:hover {
+  svg{
+    stroke: #fe7800;
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+}
+
+.main__sectionToDoS__checklist__item__icon{
+  stroke: #004976;
+  transition: 0.3s;
+}
+
+.main__sectionToDoS__checklist__item__icon:hover {
+  stroke: #fe7800;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+#checklist {
+  width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main__sectionToDoS__checklist__notItem {
+  text-align: center;
+  color: #004976;
+
+}
+
+.main__sectionToDoS__checklist__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main__sectionToDoS__checklist__item__contols {
+  display: flex;
+  gap: 10px;
+
+  svg {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+#checklist label {
+  color: #004976;
+  position: relative;
+  cursor: pointer;
+  display: grid;
+  align-items: center;
+  width: fit-content;
+  transition: color 0.3s ease;
+  margin-right: 20px;
+  word-wrap: anywhere;
+}
+
+#checklist label::before,
+#checklist label::after {
+  content: "";
+  position: absolute;
+}
+
+#checklist label::before {
+  height: 2px;
+  width: 8px;
+  top: 10px;
+  left: -27px;
+  background: #fe7800;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+#checklist label:after {
+  height: 4px;
+  width: 4px;
+  top: 8px;
+  left: -25px;
+  border-radius: 50%;
+}
+
+#checklist input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  height: 15px;
+  width: 15px;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#checklist input[type="checkbox"]::before,
+#checklist input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  top: auto;
+  background: #fe7800;
+  border-radius: 2px;
+}
+
+#checklist input[type="checkbox"]::before {
+  width: 0px;
+  right: 60%;
+  transform-origin: right bottom;
+}
+
+#checklist input[type="checkbox"]::after {
+  width: 0px;
+  left: 40%;
+  transform-origin: left bottom;
+}
+
+#checklist input[type="checkbox"]:checked::before {
+  animation: check-01 0.4s ease forwards;
+}
+
+#checklist input[type="checkbox"]:checked::after {
+  animation: check-02 0.4s ease forwards;
+}
+
+#checklist input[type="checkbox"]:checked+label {
+  color: #c3c8de;
+  animation: move 0.3s ease 0.1s forwards;
+}
+
+#checklist input[type="checkbox"]:checked+label::before {
+  background: #c3c8de;
+  animation: slice 0.4s ease forwards;
+}
+
+#checklist input[type="checkbox"]:checked+label::after {
+  animation: firework 0.5s ease forwards 0.1s;
+}
+
+@keyframes move {
+  50% {
+    padding-left: 8px;
+    padding-right: 0px;
+  }
+
+  100% {
+    padding-right: 4px;
+  }
+}
+
+@keyframes slice {
+  60% {
+    width: 100%;
+    left: 4px;
+  }
+
+  100% {
+    width: 100%;
+    left: -2px;
+    padding-left: 0;
+  }
+}
+
+@keyframes check-01 {
+  0% {
+    width: 4px;
+    top: auto;
+    transform: rotate(0);
+  }
+
+  50% {
+    width: 0px;
+    top: auto;
+    transform: rotate(0);
+  }
+
+  51% {
+    width: 0px;
+    top: 8px;
+    transform: rotate(45deg);
+  }
+
+  100% {
+    width: 5px;
+    top: 8px;
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes check-02 {
+  0% {
+    width: 4px;
+    top: auto;
+    transform: rotate(0);
+  }
+
+  50% {
+    width: 0px;
+    top: auto;
+    transform: rotate(0);
+  }
+
+  51% {
+    width: 0px;
+    top: 8px;
+    transform: rotate(-45deg);
+  }
+
+  100% {
+    width: 10px;
+    top: 8px;
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes firework {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 0 -2px #fe7800, 0 0 0 -2px #fe7800, 0 0 0 -2px #fe7800, 0 0 0 -2px #fe7800, 0 0 0 -2px #fe7800, 0 0 0 -2px #fe7800;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    box-shadow: 0 -15px 0 0px #fe7800, 14px -8px 0 0px #fe7800, 14px 8px 0 0px #fe7800, 0 15px 0 0px #fe7800, -14px 8px 0 0px #fe7800, -14px -8px 0 0px #fe7800;
+  }
+}
+
+.main__sectionToDoS__controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.main__sectionToDoS__tabs {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 2px;
+  background-color: #f6f6f6;
+  border-radius: 9px;
+}
+
+.main__sectionToDoS__tabs__indicator {
+  content: "";
+  width: 130px;
+  height: 28px;
+  background: #ffffff;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  z-index: 9;
+  border: 0.5px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+  border-radius: 7px;
+  transition: all 0.2s ease-out;
+  color: #fe7800;
+}
+
+.main__sectionToDoS__tab {
+  width: 130px;
+  height: 28px;
+  position: absolute;
+  z-index: 99;
+  outline: none;
+  opacity: 0;
+}
+
+.main__sectionToDoS__tab_label {
+  width: 130px;
+  height: 28px;
+  position: relative;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.main__sectionToDoS__tab:checked+.main__sectionToDoS__tab_label {
+  color: #fe7800;
+  opacity: 1;
+}
+
+.main__sectionToDoS__tab--1:checked~.main__sectionToDoS__tabs__indicator {
+  left: 2px;
+}
+
+.main__sectionToDoS__tab--2:checked~.main__sectionToDoS__tabs__indicator {
+  left: calc(130px + 2px);
+}
+
+.main__sectionToDoS__tab--3:checked~.main__sectionToDoS__tabs__indicator {
+  left: calc(130px * 2 + 2px);
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fe7800;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
